@@ -97,10 +97,10 @@ macro(ctkMacroBuildLib)
   set(${prefix}_QRC_SRCS)
 
   # Wrap
-  QT4_WRAP_CPP(${prefix}_MOC_CXX ${${prefix}_MOC_SRCS})
-  QT4_WRAP_UI(${prefix}_UI_CXX ${${prefix}_UI_FORMS})
+  QT5_WRAP_CPP(${prefix}_MOC_CXX ${${prefix}_MOC_SRCS})
+  QT5_WRAP_UI(${prefix}_UI_CXX ${${prefix}_UI_FORMS})
   if(DEFINED ${prefix}_RESOURCES)
-    QT4_ADD_RESOURCES(${prefix}_QRC_SRCS ${${prefix}_RESOURCES})
+    QT5_ADD_RESOURCES(${prefix}_QRC_SRCS ${${prefix}_RESOURCES})
   endif()
 
   source_group("Resources" FILES
@@ -139,6 +139,10 @@ macro(ctkMacroBuildLib)
 
   set(my_libs
     ${${prefix}_TARGET_LIBRARIES}
+	Qt5::WinMain
+	Qt5::Core
+	Qt5::Gui
+	Qt5::Widgets	
     )
   target_link_libraries(${lib_name} ${my_libs})
 
